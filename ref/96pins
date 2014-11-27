@@ -1,0 +1,38 @@
+
+
+                 -------v-------
+   61   /rd                    60  p3.0              
+        ale			   p3.1              
+        inst			   p3.2              
+        buswidth		   p3.3              
+        clkout			   p3.4              
+        xtal2			   p3.5              
+        xtal1			   p3.6              
+   68   vss			   p3.7              
+    1   vcc                        p4.0                          
+        /ea			   p4.1                          
+        nmi			   p4.2                          
+        p0.3/ach3		   p4.3                          
+        p0.1/ach1		   p4.4                          
+        p0.0/ach0		   p4.5                          
+        p0.2/ach2		   p4.6                          
+        p0.6/ach6		   p4.7                          
+        p0.7/ach7		   p2.3/t2clk                             
+        p0.5/ach5		   ready                         
+        p0.4/ach4		   p2.4/t2rst           
+        agnd			   /wrh                 
+        vref			   /wrl//wr             
+        vss			   p2.5/pwm0            
+        p2.2/extint		   p2.7/t2capt          
+        /reset			   vpp                  
+        p2.1/rxd		   vss                  
+        p2.0/txd		   hs03                 
+        p1.0			   hso2      
+        p1.1			   p2.6/t2updn
+        p1.2			   p1.7
+        p1.3/pwm1		   p1.6   
+        p1.4/pwm2		   p1.5  
+        hsi0			   hso1   
+        hsi1			   hso0   
+  26    hsi2/hso4		27 hsi3/hso5   
+        			      

@@ -1,0 +1,22 @@
+
+function foo {
+	push ax
+	push bx
+
+	switchb ah {
+
+	    case #1
+		call tcp_input
+		break
+	    case #2
+		call udp_input
+		/* fall through */
+	    case #3
+		call icmp_input
+		break
+	    default
+		call error_input
+	}
+	pop bx
+	pop ax
+}

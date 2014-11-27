@@ -1,0 +1,40 @@
+
+
+device gal16v8;
+
+signature "snmp0.00";
+
+pins 
+ale_i, a15, a14, a13, a12, a11, a10, s0, s1, gnd,
+ale, csrom, csram, a13ram, a13rom, a14ram, a14rom, csppi, ale_o, vcc;
+
+equations
+
+ale_o = /ale_i;
+
+// 0x2000 .. 0x9FFF (32k)
+/csrom = /a15 * /a14 *  a13
+       + /a15 *  a14
+       +  a15 * /a14 * /a13 ;
+
+
+// 0xA000 .. 0xFFFF (24k)
+/csram =  a15 * /a14 *  a13
+       +  a15 *  a14 ;
+ 
+
+// 0x0FF0
+// (actually 0C00 .. 0FFF)
+/csppi = /a15 * /a14 * /a13 * /a12 *  a11 *  a10 ;	
+
+
+
+// address 2000..9FFF are mapped onto 0000..7FFF
+a13rom = /a13 ;
+a14rom = /a15 *  a14 *  a13
+       + /a15 * /a14 * /a13 ;
+ 
+a13ram = a13 ;
+a14ram = a14 ;
+
+

@@ -1,0 +1,88 @@
+                                                                                                                        
+
+DOS 5.00 (046-N) MCS-96 RELOCATOR AND LINKER, V2.4
+Copyright 1983, 1990 Intel Corporation      
+
+INPUT FILES: test2.obj, c:\lib\ic96\cstart.obj, c:\lib\ic96\c96.lib 
+OUTPUT FILE: test2
+CONTROLS SPECIFIED IN INVOCATION COMMAND: 
+   purge absstack rom(2000h-9FFFh) ram(01ah-0ffh, 0A000h-0FFFFh(stack)) 
+
+
+INPUT MODULES INCLUDED:
+   test2.obj(TEST2)  08/12/97 18:52:10, iC-96 V2.3, MD(BH)
+   c:\lib\ic96\cstart.obj(CSTART)  12/04/90 09:34:37
+   c:\lib\ic96\c96.lib(FRAM01)  11/05/91 17:32:36
+   c:\lib\ic96\c96.lib(PLMREG)  11/05/91 17:33:26
+   c:\lib\ic96\c96.lib(SFR)  11/05/91 17:33:59
+
+
+SEGMENT MAP FOR test2(TEST2):
+
+            TYPE    BASE      LENGTH    ALIGNMENT    MODULE NAME
+            ----    ----      ------    ---------    -----------
+
+**RESERVED*         0000H     001AH
+            OVRLY   001AH     0002H     WORD         TEST2
+            REG     001CH     0008H     ABSOLUTE     PLMREG
+            REG     0024H     0002H     WORD         FRAM01
+*** GAP ***         0026H     1FF2H
+            CODE    2018H     0001H     ABSOLUTE     TEST2
+*** GAP ***         2019H     0067H
+            CODE    2080H     0003H     ABSOLUTE     CSTART
+            CODE    2083H     0039H     BYTE         TEST2
+            CODE    20BCH     0007H     BYTE         CSTART
+*** GAP ***         20C3H     7F3DH
+            STACK   A000H     0008H     WORD
+*** GAP ***         A008H     5FF8H
+
+
+                                                                                                                        
+
+SYMBOL TABLE FOR test2(TEST2):
+
+ATTRIBUTES              VALUE     NAME
+----------              -----     ----
+
+                                  PUBLICS:
+CODE    ENTRY           2083H       MAIN
+REG     WORD            0024H       ?FRAME01
+REG     NULL            001CH       PLMREG
+REG     BYTE            0002H       AD_COMMAND
+REG     BYTE            0002H       AD_RESULT_LO
+REG     BYTE            0003H       AD_RESULT_HI
+REG     BYTE            0003H       HSI_MODE
+REG     WORD            0004H       HSO_TIME
+REG     WORD            0004H       HSI_TIME
+REG     BYTE            0006H       HSO_COMMAND
+REG     BYTE            0006H       HSI_STATUS
+REG     BYTE            0007H       SBUF
+REG     WORD            000AH       TIMER1
+REG     WORD            000CH       TIMER2
+REG     BYTE            000EH       BAUD_RATE
+REG     BYTE            000EH       IOPORT0
+REG     BYTE            000FH       IOPORT1
+REG     BYTE            0010H       IOPORT2
+REG     BYTE            0011H       SP_CON
+REG     BYTE            0011H       SP_STAT
+REG     BYTE            0015H       IOC0
+REG     BYTE            0015H       IOS0
+REG     BYTE            0016H       IOC1
+REG     BYTE            0016H       IOS1
+REG     BYTE            0017H       PWM_CONTROL
+NULL    NULL            A008H       MEMORY
+NULL    NULL            5FF8H       ?MEMORY_SIZE
+
+                                  MODULE: TEST2
+
+                                  MODULE: CSTART
+
+                                  MODULE: FRAM01
+
+                                  MODULE: PLMREG
+
+                                  MODULE: SFR
+
+
+RL96 COMPLETED,   0 WARNING(S),   0 ERROR(S)
+

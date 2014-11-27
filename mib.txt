@@ -1,0 +1,115 @@
+
+OPNET-SNMPBOX1 DEFINITIONS ::= BEGIN
+
+IMPORTS
+        private, NetworkAddress, IpAddress, Counter, Gauge,
+                TimeTicks
+            FROM RFC1155-SMI
+        OBJECT-TYPE 
+            FROM RFC-1212
+        DisplayString 
+            FROM RFC1213-MIB;
+ 
+
+
+opnet OBJECT IDENTIFIER ::= { enterprises 2532 }
+
+
+Products OBJECT IDENTIFIER
+	::= { opnet 1 }
+
+People OBJECT IDENTIFIER
+	::= { opnet 2 }
+
+Services OBJECT IDENTIFIER
+	::= { opnet 3 }
+
+Network OBJECT IDENTIFIER
+	::= { opnet 4 }
+
+
+
+SNMPBox OBJECT IDENTIFIER
+	::= { Products 1 }
+
+SNMPBoxV1 OBJECT IDENTIFIER
+	::= { SNMPBox 1 }
+
+
+
+ADC	OBJECT IDENTIFIER
+	::= { SNMPBoxV1 1}
+
+ADC0	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 1 } 
+
+ADC1	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 2 } 
+
+ADC2	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 3 } 
+
+ADC3	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 4 } 
+
+ADC4	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 5 } 
+
+ADC5	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 6 } 
+
+ADC6	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 7 } 
+
+ADC7	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 8 } 
+
+ADC8	OBJECT-TYPE
+	SYNTAX INTEGER (0..255)
+	ACCESS read-only
+	STATUS mandatory
+	DESCRIPTION "stuff"
+	::= { ADC 1 } 
+
+
+NetStat	OBJECT IDENTIFIER
+	::= { SNMPBoxV1 2}
+
+
+
+
+
+
+END

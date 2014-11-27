@@ -1,0 +1,37 @@
+
+.proc
+foo:
+F_PROLOGUE()
+push ax 
+push bx 
+
+;; switch on ah
+
+CASENEXT0.0$:
+cmpb ah, #1
+jne CASENEXT0.1$
+call tcp_input 
+jmp endcase0$
+CASENEXT0.1$:
+cmpb ah, #2
+jne CASENEXT0.2$
+call udp_input 
+/* fall through */ 
+CASENEXT0.2$:
+cmpb ah, #3
+jne CASENEXT0.3$
+call icmp_input 
+jmp endcase0$
+CASENEXT0.3$:
+call error_input 
+endcase0$:
+
+pop bx 
+pop ax 
+
+end$:
+F_EPILOGUE()
+ret
+; ****************
+
+

@@ -1,0 +1,95 @@
+
+#include "8096.i96"
+
+.bin "test1.bin"
+
+MHz             equ 8           ; CPU speed
+#define B(x)    (1 << (x))
+
+IO_PPI          = $FF0
+IO_PPI_0        = IO_PPI
+IO_PPI_1        = (IO_PPI+1)
+IO_PPI_2        = (IO_PPI+2)
+IO_PPI_C        = (IO_PPI+3)
+
+ROM_START       = $2000
+ROM_LAST        = $9FFF
+RAM_START       = $A000
+RAM_LAST        = $FFFF
+
+
+.org $1A
+ax:	.skip 2
+bx:	.skip 2
+cx:	.skip 2
+dx:	.skip 2
+
+spi:	.skip 2
+
+
+.org $2000
+.word null_int
+.word null_int
+.word null_int
+.word null_int
+.word null_int
+.word null_int
+.word serial_int
+.word null_int
+.word null_int
+.word null_int
+
+.org $2018
+ccb:	.byte $EC
+
+.org $2080
+reset:
+	di
+	ldb ipend, r0
+	ld sp, #$FE	; stack
+
+	; init PPI
+	ldb ax, #$88
+	stb ax, IO_PPI_C[r0]
+
+	; init serial
+	ldb baud_rate, #$0C
+	ldb baud_rate, #$80
+	ldb sp_con, #9
+	ldb sp_stat, r0
+	ldb r0, sp_stat
+	ldb sbuf, r0
+	ldb r0, sbuf
+	ldb ipend, #B(6)
+
+	clr ax
+	clr bx
+	inc bx
+
+    L$:
+		stb ax, ioport1
+		; stb ax, ioport2
+		stb ax, IO_PPI_0[r0]
+		stb ax, IO_PPI_1[r0]
+		stb ax, IO_PPI_2[r0]
+		inc ax
+
+		jbc ipend, 6, L$
+			clr ipend
+			ldb sbuf, bx
+			inc bx
+		jmp L$
+
+
+
+null_int:
+	pushf
+	popf
+	ret
+
+serial_int:
+	pushf
+	orb spi, sp_stat
+	popf
+	ret
+
